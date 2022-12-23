@@ -1,0 +1,51 @@
+type Query {
+
+    getAllMatch:[String]
+
+}
+
+type Mutation{
+    addMatch(matchInput : MatchInput) : Match,
+    deleteMatch(id:ID):Boolean,
+    addTicket(ticketInput : TicketInput, id:ID) : Ticket,
+    updateTicket(id:ID) : Boolean,
+    deletTicket(id:ID):Boolean
+}
+
+
+
+type Match {
+ id:ID,
+ referenceMatch:String,
+ dateMatch:String,
+ lieuMatch:String,
+ equipe1:String,
+ equipe2:String,
+ ticketsDispo:Int
+}
+
+type Ticket{
+    id:ID,
+    referenceTicket:String,
+    prix:Float,
+    statut:Statut,
+    match:Match
+}
+
+enum Statut{
+    ACTIF,
+    NO_ACTIF
+}
+
+input MatchInput {
+
+    referenceMatch:String,
+    lieuMatch:String,
+    equipe1:String,
+    equipe2:String
+}
+input TicketInput {
+    referenceTicket:String,
+    prix:Float
+
+}
